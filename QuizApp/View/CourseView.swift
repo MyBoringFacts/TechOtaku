@@ -14,30 +14,38 @@ import AVFoundation
 struct CourseView: View {
     var body: some View {
         NavigationView {
-                    VStack {
-                        Text("Java Beginner Course")
-                            .font(.largeTitle)
-                            .padding()
+            VStack {
+                Text("Java Beginner Course")
+                    .font(.largeTitle)
+                    .padding()
 
-                        Text("Hello")
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
-                            .padding()
+                Text("Hello")
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+                    .padding()
 
-                        List {
-                            ForEach(0..<CourseDataService.topics.count, id: \.self) { index in
-                                NavigationLink(
-                                    destination: TopicDetailView(
-                                        topic: CourseDataService.topics[index]
-                                    )
-                                ) {
-                                    Text(CourseDataService.topics[index].title)
-                                }
-                            }
+                List {
+                    ForEach(0..<CourseDataService.topics.count, id: \.self) { index in
+                        NavigationLink(
+                            destination: TopicDetailView(
+                                topic: CourseDataService.topics[index]
+                            )
+                        ) {
+                            Text(CourseDataService.topics[index].title)
                         }
                     }
-                    .navigationBarTitle("JAVA", displayMode: .inline)
                 }
+                NavigationLink(destination: ContentView()) {
+                    RoundedRectangle(cornerRadius: 30)
+                        .frame(width: 150, height: 100)
+                        .overlay(
+                            Text("Next")
+                                .foregroundColor(.white)
+                        )
+                }
+            }
+            .navigationBarTitle("JAVA", displayMode: .inline)
+        }
 
 
     }
